@@ -1,4 +1,4 @@
- <template>
+<template>
     <v-app>
         <app-navigation></app-navigation>
 
@@ -19,5 +19,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

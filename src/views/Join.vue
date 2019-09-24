@@ -10,5 +10,4 @@ export default {
     name: 'Join'
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

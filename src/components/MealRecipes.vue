@@ -8,11 +8,17 @@
                     </v-responsive>
 
                     <v-card-text>
-                        <div class="title">{{item.recipe.label}}</div>
+                        <div class="title">{{ item.recipe.label }}</div>
 
                         <div class="subheading">Ingredients</div>
                         <ul>
-                            <li v-for="(ingredient, i) in item.recipe.ingredientLines" :key="i">{{ingredient}}</li>
+                            <li
+                                v-for="(ingredient, i) in item.recipe
+                                    .ingredientLines"
+                                :key="i"
+                            >
+                                {{ ingredient }}
+                            </li>
                         </ul>
                     </v-card-text>
                 </v-card>
@@ -32,5 +38,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
