@@ -11,9 +11,11 @@ import MealRecipes from '@/components/MealRecipes';
 
 export default {
     name: 'Menu',
+
     components: {
         HomePlans,
-        MealRecipes
+        MealRecipes  
+              
     }
 };
 </script>

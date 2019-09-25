@@ -29,6 +29,9 @@ export default new Vuex.Store({
         }
     },
     actions: {
+        resetRecipes(){
+            commit('setRecipes', []);
+        },
         async getRecipes({ state, commit }, plan) {
             try {
                 let response = await axios.get(`${state.apiUrl}`, {
