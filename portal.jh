@@ -1,0 +1,94 @@
+#arrowSize: 1
+#bendSize: 0.3
+#direction: down | right
+#gutter: 5
+#edgeMargin: 0
+#edges: hard | rounded
+#background: transparent
+#fill: #eee8d5; #fdf6e3
+#fillArrows: false
+#font: Calibri
+#fontSize: 12
+#leading: 1.25
+#lineWidth: 3
+#padding: 8
+#spacing: 40
+#stroke: #33322E
+#title: soc portal
+#zoom: 1
+#acyclicer: greedy
+#ranker: network-simplex | tight-tree | longest-path
+
+application {
+  config {
+    baseName soc_portal
+    applicationType microservice
+    packageName work.antoniocaccamo.soc.portal
+    authenticationType oauth2
+    prodDatabaseType postgresql
+    entitySuffix Entity
+    clientFramework vue
+    languages [en, it]
+    serviceDiscoveryType no
+  }
+  entities OrgUnit, Report, Message, Offence, 
+           Severity, Status
+  use mapstruct, service, pagination for *
+}
+
+
+entity OrgUnit {
+	name 		String required
+    description String
+}
+
+entity Message {
+	id 			Long required
+    message     String
+    for         String
+    read        Instant
+}
+
+entity Report {
+	id 			Long required
+    name		String
+    content		Blob
+    published	Instant
+}
+
+
+
+entity Offence {
+	id 			Long required
+    type 		OffenceType
+    status 		Status
+    severity 	Severity
+    title       String
+    author      String
+    published	Instant
+}
+
+
+relationship ManyToOne {
+	Report 	to OrgUnit 	
+  	Offence to OrgUnit 	
+    Message to OrgUnit 
+    Severity to Offence
+    Status to Offence
+}
+
+
+entity Severity {
+	name  String required
+    color String required
+}
+
+entity Status {
+	name  String required
+    color String required
+
+}
+
+enum OffenceType {
+	Ticket
+}
